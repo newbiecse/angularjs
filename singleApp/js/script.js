@@ -3,8 +3,8 @@
 
 	
 	// services
-	scotchApp.factory('myService', function ($http) {
-		self = this;
+	scotchApp.factory('myService', function ($http, $q) {
+		var deffered = $q.defer();
 		var listData = {};			
 		
 		/**
@@ -12,15 +12,15 @@
 		*/
 		return {
 			loadData: function (){
-				var promise = $http.get('https://api.github.com/users/mralexgray/repos')
+					$http.get('https://api.github.com/users/mralexgray/repos')
 					.success(function(data, status, headers, config) {
 						listData = data;
+						deffered.resolve();
 					})
 					.error(function(data, status, headers, config) {
 						alert(data);
 					});
-
-				return promise;
+				 return deffered.promise;
 			},
 			getListData: function() {
 				return listData;
@@ -76,8 +76,9 @@
 		
 		// invoke service load data
 		$scope.loadAjax = function() {
-			myService.loadData();
-			$scope.listObj = myService.getListData();
+			myService.loadData().then(function(){
+				$scope.listObj = myService.getListData();
+			});			
 		}
 		
 	}]);
