@@ -1,5 +1,5 @@
 // services
-scotchApp.factory('myService', function ($http, $q) {
+scotchApp.factory('homeService', function ($http, $q) {
 	var deffered = $q.defer();
 	var listData = {};			
 	

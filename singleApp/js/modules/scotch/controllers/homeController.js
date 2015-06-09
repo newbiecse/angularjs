@@ -1,5 +1,5 @@
 // create the controller and inject Angular's $scope
-scotchApp.controller('mainController', ['$scope', 'myService', '$http', function($scope, myService, $http) {
+scotchApp.controller('homeController', ['$scope', 'homeService', '$http', function($scope, homeService, $http) {
 	// create a message to display in our view
 	$scope.message = 'Everyone come and see how good I look!';
 	
@@ -13,12 +13,12 @@ scotchApp.controller('mainController', ['$scope', 'myService', '$http', function
 
 	
 	// get current data from service
-	$scope.listObj = myService.getListData();
+	$scope.listObj = homeService.getListData();
 	
 	// invoke service load data
 	$scope.loadAjax = function() {
-		myService.loadData().then(function(){
-			$scope.listObj = myService.getListData();
+		homeService.loadData().then(function(){
+			$scope.listObj = homeService.getListData();
 		});			
 	}
 	

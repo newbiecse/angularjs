@@ -5,7 +5,7 @@ scotchApp.config(function($routeProvider) {
 		// route for the home page
 		.when('/', {
 			templateUrl : 'pages/home.html',
-			controller  : 'mainController',
+			controller  : 'homeController',
 			reloadOnSearch: true,
 			caseInsensitiveMatch: true
 		})
