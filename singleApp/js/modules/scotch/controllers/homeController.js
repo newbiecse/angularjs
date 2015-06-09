@@ -10,6 +10,8 @@ scotchApp.controller('homeController', ['$scope', 'homeService', '$http', functi
 		$scope.reverse = ($scope.predicate == columnName) ? !$scope.reverse : false;
 		$scope.predicate = columnName;
 	}
+	
+	// search
 
 	
 	// get current data from service

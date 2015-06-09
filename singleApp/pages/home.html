@@ -8,13 +8,22 @@
 
 	<div>
 		<img ng-show="loading" src="images/ajax-loader.gif">
-		<table class="table table-condensed">
+		<table class="table table-bordered">
 		  <thead>
-			<th ng-click="order('id')">Id</th>
-			<th ng-click="order('name')">Name</th>
-			<th ng-click="order('full_name')">Full name</th>
+			<th>
+				<a class="a-header-table" href="#" ng-click="order('id')">Id</a>
+				<input type="text" class="form-control txt-search-header" ng-model="search.id" />
+			</th>
+			<th>
+				<a class="a-header-table" href="#" ng-click="order('name')">Name</a>
+				<input type="text" class="form-control txt-search-header" ng-model="search.name" />				
+			</th>
+			<th>
+				<a class="a-header-table" href="#" ng-click="order('full_name')">Full name</a>
+				<input type="text" class="form-control txt-search-header" ng-model="search.full_name" />
+			</th>
 		  </thead>
-		  <tbody ng-repeat="obj in listObj | orderBy:predicate:reverse">
+		  <tbody ng-repeat="obj in listObj | filter:search:name | orderBy:predicate:reverse">
 			<tr>
 				<td>{{obj.id}}</td>
 				<td>{{obj.name}}</td>
