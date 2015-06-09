@@ -3,3 +3,30 @@
 	
 	<p>{{ message }}</p>
 </div>
+
+	<div>
+		<img ng-show="loading" src="images/ajax-loader.gif">
+		<table class="table table-bordered">
+		  <thead>
+			<th>
+				<a class="a-header-table" href="" ng-click="order('id')">Id</a>
+				<input type="text" class="form-control txt-search-header" ng-model="search.id" />
+			</th>
+			<th>
+				<a class="a-header-table" href="" ng-click="order('name')">Name</a>
+				<input type="text" class="form-control txt-search-header" ng-model="search.name" />				
+			</th>
+			<th>
+				<a class="a-header-table" href="" ng-click="order('full_name')">Full name</a>
+				<input type="text" class="form-control txt-search-header" ng-model="search.full_name" />
+			</th>
+		  </thead>
+		  <tbody ng-repeat="obj in listObj | filter:search:name">
+			<tr>
+				<td>{{obj.id}}</td>
+				<td>{{obj.name}}</td>
+				<td>{{obj.full_name}}</td>
+			</tr>
+		  </tbody>
+		</table>
+	</div>

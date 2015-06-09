@@ -1,7 +1,9 @@
 // services
 scotchApp.factory('homeService', function ($http, $q) {
 	var deffered = $q.defer();
-	var listData = {};			
+	var listData = {};
+
+	var txtSearchId = "";
 	
 	/**
 	*	load data from API
@@ -20,6 +22,9 @@ scotchApp.factory('homeService', function ($http, $q) {
 		},
 		getListData: function() {
 			return listData;
+		},
+		setListData: function(data) {
+			listData = data;
 		}
 	}
 	

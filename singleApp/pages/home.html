@@ -1,29 +1,34 @@
 <div class="jumbotron text-center">
 	<h1>Home Page</h1>
 	
-	<button ng-click="loadAjax()">Load</button>
-	<input type="text" ng-model="name" />
+    <!-- You can use a custom html template with the `data-template` attr -->
+    <button type="button" class="btn btn-lg btn-danger" data-animation="am-fade-and-slide-top" data-template="modal/docs/modal.demo.tpl.html" bs-modal="modal">Custom Modal
+      <br />
+      <small>(using data-template)</small>
+    </button>	
+	
+	
+	<input type="text" ng-model="search.$" />
 	{{name}}
 	<p>{{ message }}</p>
-
 	<div>
 		<img ng-show="loading" src="images/ajax-loader.gif">
 		<table class="table table-bordered">
 		  <thead>
 			<th>
-				<a class="a-header-table" href="#" ng-click="order('id')">Id</a>
+				<a class="a-header-table" href="" ng-click="order('id')">Id</a>
 				<input type="text" class="form-control txt-search-header" ng-model="search.id" />
 			</th>
 			<th>
-				<a class="a-header-table" href="#" ng-click="order('name')">Name</a>
+				<a class="a-header-table" href="" ng-click="order('name')">Name</a>
 				<input type="text" class="form-control txt-search-header" ng-model="search.name" />				
 			</th>
 			<th>
-				<a class="a-header-table" href="#" ng-click="order('full_name')">Full name</a>
+				<a class="a-header-table" href="" ng-click="order('full_name')">Full name</a>
 				<input type="text" class="form-control txt-search-header" ng-model="search.full_name" />
 			</th>
 		  </thead>
-		  <tbody ng-repeat="obj in listObj | filter:search:name | orderBy:predicate:reverse">
+		  <tbody ng-repeat="obj in listObj | filter:search:name">
 			<tr>
 				<td>{{obj.id}}</td>
 				<td>{{obj.name}}</td>
