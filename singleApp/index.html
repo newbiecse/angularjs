@@ -4,14 +4,34 @@
 <html ng-app="scotchApp">
 
 <head>
-  <!-- SCROLLS -->
+  <!-- css -->
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="stylesheet" href="css/font-awesome.css" />
 
-  <!-- SPELLS -->
+  
+  <!-- core -->
   <script src="js/angular.min.js"></script>
   <script src="js/angular-route.js"></script>
-  <script src="js/script.js"></script>
+  
+  
+  <!-- configue -->
+  <script src="js/configs/app.js"></script>
+  <script src="js/configs/routers.js"></script>
+  
+  
+  <!-- MODULES -->
+  
+	  <!-- 1.module scotch -->
+		  <!-- controllers -->
+		  <script src="js/modules/scotch/controllers/mainController.js"></script>
+		  <script src="js/modules/scotch/controllers/contactController.js"></script>
+		  <script src="js/modules/scotch/controllers/aboutController.js"></script>	  
+		  <!-- services -->
+		  <script src="js/modules/scotch/services/myService.js"></script>
+	  <!-- END 1.module scotch -->	  
+  
+  <!-- END MODULES -->  
+  
 </head>
 
 <!-- define angular controller -->
