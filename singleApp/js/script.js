@@ -3,7 +3,8 @@
 
 	
 	// services
-	scotchApp.service('myService', function () {
+	scotchApp.service('myService', function ($http) {
+		self = this;
 		var listData = {};
 		this.setListData = function(_listData) {
 			listData = _listData;
@@ -11,6 +12,20 @@
 		this.getListData = function() {
 			return listData;
 		}
+		
+		/**
+		*	load data from API
+		*/
+		this.loadData = function (){
+			$http.get('https://api.github.com/users/mralexgray/repos').
+			  success(function(data, status, headers, config) {
+				self.setListData(data);
+			  }).
+			  error(function(data, status, headers, config) {
+				alert(data);
+			  });			
+		}
+		
 	});	
 	/*
 	scotchApp.factory('myService', function () {
@@ -58,28 +73,25 @@
 		// create a message to display in our view
 		$scope.message = 'Everyone come and see how good I look!';
 		
+		// sort & pagination
+		// | orderBy:predicate:reverse
+		$scope.predicate = "id";
+		$scope.reverse = false;
+		$scope.order = function(columnName) {
+			$scope.reverse = ($scope.predicate == columnName) ? !$scope.reverse : false;
+			$scope.predicate = columnName;
+		}
 		
 		$scope.listObj = myService.getListData();
 		
 		$scope.loadAjax = function (){
 			
 			$scope.loading = true;
+			myService.loadData();
+			$scope.listObj = myService.getListData();
+			$scope.loading = false;
 			
-			// Simple GET request example :
-			$http.get('https://api.github.com/users/mralexgray/repos').
-			  success(function(data, status, headers, config) {
-				// this callback will be called asynchronously
-				// when the response is available
-				$scope.listObj = data;
-				// store data to service
-				myService.setListData(data);
-				$scope.loading = false;
-			  }).
-			  error(function(data, status, headers, config) {
-				// called asynchronously if an error occurs
-				// or server returns response with an error status.
-				alert(data);
-			  });			
+		
 		}
 		
 	}]);

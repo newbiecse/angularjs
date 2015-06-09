@@ -10,11 +10,11 @@
 		<img ng-show="loading" src="images/ajax-loader.gif">
 		<table class="table table-condensed">
 		  <thead>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Full name</th>
+			<th ng-click="order('id')">Id</th>
+			<th ng-click="order('name')">Name</th>
+			<th ng-click="order('full_name')">Full name</th>
 		  </thead>
-		  <tbody ng-repeat="obj in listObj">
+		  <tbody ng-repeat="obj in listObj | orderBy:predicate:reverse">
 			<tr>
 				<td>{{obj.id}}</td>
 				<td>{{obj.name}}</td>
