@@ -3,42 +3,31 @@
 
 	
 	// services
-	scotchApp.service('myService', function ($http) {
+	scotchApp.factory('myService', function ($http) {
 		self = this;
-		var listData = {};
-		this.setListData = function(_listData) {
-			listData = _listData;
-		}
-		this.getListData = function() {
-			return listData;
-		}
+		var listData = {};			
 		
 		/**
 		*	load data from API
 		*/
-		this.loadData = function (){
-			$http.get('https://api.github.com/users/mralexgray/repos').
-			  success(function(data, status, headers, config) {
-				self.setListData(data);
-			  }).
-			  error(function(data, status, headers, config) {
-				alert(data);
-			  });			
+		return {
+			loadData: function (){
+				var promise = $http.get('https://api.github.com/users/mralexgray/repos')
+					.success(function(data, status, headers, config) {
+						listData = data;
+					})
+					.error(function(data, status, headers, config) {
+						alert(data);
+					});
+
+				return promise;
+			},
+			getListData: function() {
+				return listData;
+			}
 		}
 		
 	});	
-	/*
-	scotchApp.factory('myService', function () {
-		var listData = {};
-		this.setListData = function(_listData) {
-			listData = _listData;
-		}
-		this.getListData = function() {
-			return listData;
-		}
-	});
-	*/
-	
 	
 	
 	// configure our routes
@@ -74,24 +63,21 @@
 		$scope.message = 'Everyone come and see how good I look!';
 		
 		// sort & pagination
-		// | orderBy:predicate:reverse
 		$scope.predicate = "id";
 		$scope.reverse = false;
 		$scope.order = function(columnName) {
 			$scope.reverse = ($scope.predicate == columnName) ? !$scope.reverse : false;
 			$scope.predicate = columnName;
 		}
+	
 		
+		// get current data from service
 		$scope.listObj = myService.getListData();
 		
-		$scope.loadAjax = function (){
-			
-			$scope.loading = true;
+		// invoke service load data
+		$scope.loadAjax = function() {
 			myService.loadData();
 			$scope.listObj = myService.getListData();
-			$scope.loading = false;
-			
-		
 		}
 		
 	}]);
