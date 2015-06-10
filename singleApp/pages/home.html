@@ -1,12 +1,15 @@
 <div class="jumbotron text-center">
 	<h1>Home Page</h1>
 	
+	
+	
     <!-- Button to trigger a default modal with a scope as an object {title:'', content:'', etc.} -->
     <button type="button" class="btn btn-lg btn-primary" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal">Click to toggle modal
       <br />
       <small>(using an object)</small>
     </button>
 	
+	<button class="btn btn-success" ng-click="loadAjax()">load</button>
 	
 	<input type="text" ng-model="search.$" />
 	{{name}}
