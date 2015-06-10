@@ -15,7 +15,10 @@
 	{{name}}
 	<p>{{ message }}</p>
 	<div>
-		<img ng-show="loading" src="images/ajax-loader.gif">
+		<div class="loading-container" style="color: #333; width: 500px; height: 500px; z-index: 1000">
+			<img class="center" src="images/ajax-loader.gif">
+		</div>
+		
 		<table class="table table-bordered">
 		  <thead>
 			<th>

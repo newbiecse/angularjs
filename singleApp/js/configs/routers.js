@@ -4,7 +4,7 @@ scotchApp.config(function($routeProvider) {
 
 		// route for the home page
 		.when('/', {
-			templateUrl : 'pages/home.html',
+			templateUrl : 'views/home.html',
 			controller  : 'homeController',
 			reloadOnSearch: false,
 			caseInsensitiveMatch: true
@@ -12,7 +12,7 @@ scotchApp.config(function($routeProvider) {
 
 		// route for the about page
 		.when('/about', {
-			templateUrl : 'pages/about.html',
+			templateUrl : 'views/about.html',
 			controller  : 'aboutController',
 			reloadOnSearch: false,
 			caseInsensitiveMatch: true
@@ -20,7 +20,7 @@ scotchApp.config(function($routeProvider) {
 
 		// route for the contact page
 		.when('/contact', {
-			templateUrl : 'pages/contact.html',
+			templateUrl : 'views/contact.html',
 			controller  : 'contactController',
 			reloadOnSearch: false,
 			caseInsensitiveMatch: true
