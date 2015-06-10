@@ -1,2 +1,2 @@
 // create the module and name it scotchApp
-var scotchApp = angular.module('scotchApp', ['ngRoute', 'ngAnimate', 'mgcrea.ngStrap']);
+var scotchApp = angular.module('scotchApp', ['ngRoute', 'ngAnimate', 'ngSanitize', 'mgcrea.ngStrap']);

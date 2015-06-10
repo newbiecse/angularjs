@@ -36,7 +36,7 @@ scotchApp.controller('homeController', ['$scope', '$filter', 'homeService', '$ht
 		});			
 	}
 	
-	
 	// Show a basic modal from a controller
-	var myModal = $modal({title: 'My Title', content: 'My Content', show: true});
+	$scope.modal = {title: 'Title', content: 'Hello Modal<br />This is a multiline message!'};
+
 }]);
